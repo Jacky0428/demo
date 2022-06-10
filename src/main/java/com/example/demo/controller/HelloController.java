@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
@@ -27,5 +28,10 @@ public class HelloController {
     @GetMapping("/index")
     public void index(HttpServletResponse response) throws IOException {
         response.sendRedirect("http://localhost:8080/index.html");
+    }
+
+    @GetMapping("/sayHi")
+    public String sayHi(@RequestParam(value = "name", defaultValue = "Stranger")String name){
+        return String.format("Hi welcome : %s", name);
     }
 }
