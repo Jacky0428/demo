@@ -5,6 +5,7 @@ import com.example.demo.repository.UserRepository;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -13,17 +14,14 @@ public class UserServiceImplement implements UserService {
     @Autowired
     UserRepository repository;
 
+    @Transactional
     @Override
     public String addUser(String account, String pwd) {
-        try{
-            User newUser = new User();
-            newUser.setAccount(account);
-            newUser.setPassWord(pwd);
-            repository.save(newUser);
-            return "Success";
-        }catch (Exception e){
-            return e.getMessage();
-        }
+        User newUser = new User();
+        newUser.setAccount(account);
+        newUser.setPassword(pwd);
+        repository.save(newUser);
+        return "Success";
     }
 
     @Override

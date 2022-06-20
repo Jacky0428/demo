@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -13,15 +12,22 @@ import java.util.Date;
 @Entity
 public class User implements Serializable {
 
+//    @Id
+//    @GeneratedValue
+//    private Long id;
     @Id
-    @GeneratedValue
-    private Long id;
-
     private String account;
-    private String passWord;
+    private String password;
 
     private Date createDate;
 
+//    public Long getId() {
+//        return id;
+//    }
+//
+//    public void setId(Long id) {
+//        this.id = id;
+//    }
 
     public String getAccount() {
         return account;
@@ -31,12 +37,12 @@ public class User implements Serializable {
         this.account = account;
     }
 
-    public String getPassWord() {
-        return passWord;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPassWord(String passWord) {
-        this.passWord = passWord;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Date getCreateDate() {

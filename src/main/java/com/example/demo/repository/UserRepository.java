@@ -9,5 +9,5 @@ import org.springframework.data.jpa.repository.Query;
 public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query("select u from User u where u.account = ?1")
-    public User findUserByAccount(String name);
+    User findUserByAccount(String name);
 }

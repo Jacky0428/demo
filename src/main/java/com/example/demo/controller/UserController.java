@@ -2,69 +2,69 @@ package com.example.demo.controller;
 
 
 import com.example.demo.jpa.User;
-import com.example.demo.repository.UserRepository;
+import com.example.demo.service.UserRedisService;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
 import java.util.List;
 
 /**
- * User REST Api
+ * User Api
  */
-
-
-@Controller
+@RestController
 @RequestMapping("/user")
 public class UserController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    UserRedisService userRedisService;
+
     @PostMapping("/add")
-    @ResponseBody
     public  String addUser(@RequestParam String account, @RequestParam String passWord){
         return userService.addUser(account, passWord);
     }
 
     @GetMapping("/retrieve")
-    @ResponseBody
     public User getUser(@RequestParam String account){
         User user = userService.retrieveByAccount(account);
         return user;
     }
 
     @GetMapping("/retrieveAll")
-    @ResponseBody
     public List<User> getUsers(){
         return userService.retrieveAll();
     }
 
-//    @Autowired
-//    UserRepository repository;
-//
-//    @PostMapping("/add")
-//    @ResponseBody
-//    public  String addUser(@RequestParam String account, @RequestParam String passWord){
-//        User user = new User();
-//        user.setAccount(account);
-//        user.setPassWord(passWord);
-//        user.setCreateDate(new Date());
-//        repository.save(user);
-//        return "Success";
-//    }
-//
-//    @GetMapping("/retrieve")
-//    @ResponseBody
-//    public User getUser(@RequestParam String account){
-//        User user = repository.findUserByAccount(account);
-//        return user;
-//    }
-//
-//    @GetMapping("/retrieveAll")
-//    @ResponseBody
-//    public List<User> getUsers(){
-//        return repository.findAll();
-//    }
+    /**
+     * 儲存物件到 Redis 並同時練習 RESTful風格
+     */
+    /**
+     * 取得 User By Key
+     * @param account 為 key
+     * @return User 物件
+     */
+    @GetMapping("/tempUser/{account}")
+    public User getByAccount(@PathVariable("account") String account){
+        return (User) userRedisService.getDataByKey(account);
+    }
+
+    /**
+     * 將物件儲存於 Redis String 結構
+     * @param account 帳號
+     * @param password 密碼
+     * @return String of Info
+     */
+    @PostMapping("/tempUser/{account}/{password}")
+    public String createUserToRedisString(@PathVariable("account") String account, @PathVariable("password") String password){
+        User newUser = new User();
+        newUser.setAccount(account);
+        newUser.setPassword(password);
+        if (userRedisService.isExist(account))
+            return "Data Already Exist";
+        userRedisService.set(account, newUser);
+        return "Success";
+    }
+
 }
