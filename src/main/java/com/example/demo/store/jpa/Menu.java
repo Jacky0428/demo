@@ -30,7 +30,7 @@ public class Menu {
      * The menu's owner.
      */
     @ManyToOne
-    @JoinColumn(name = "store_id", referencedColumnName = "id", insertable = false, updatable = false)
+    @JoinColumn(name = "store_id", referencedColumnName = "id",nullable = false, insertable = false, updatable = false)
     private Store store;
 
     @OneToMany(mappedBy = "menu", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
