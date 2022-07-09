@@ -1,7 +1,7 @@
-package com.example.demo.serviceImp;
+package com.example.demo.user.serviceImp;
 
-import com.example.demo.jpa.User;
-import com.example.demo.service.UserRedisService;
+import com.example.demo.user.jpa.User;
+import com.example.demo.user.service.UserRedisService;
 import com.example.demo.utils.RedisOpsUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

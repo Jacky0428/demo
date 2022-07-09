@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @SpringBootApplication
-@EntityScan("com.example.demo.store.jpa")
+@EntityScan({"com.example.demo.store.jpa", "com.example.demo.user.jpa"})
 public class DemoApplication {
 
 	public static void main(String[] args) {

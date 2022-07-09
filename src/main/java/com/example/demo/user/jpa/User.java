@@ -1,33 +1,25 @@
-package com.example.demo.jpa;
+package com.example.demo.user.jpa;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
 /**
  * 使用者
  */
 @Entity
-public class User implements Serializable {
+public class User{
 
-//    @Id
-//    @GeneratedValue
-//    private Long id;
     @Id
     private String account;
+
     private String password;
 
     private Date createDate;
 
-//    public Long getId() {
-//        return id;
-//    }
-//
-//    public void setId(Long id) {
-//        this.id = id;
-//    }
+    @ManyToMany(mappedBy = "users")
+    private Set<Role> roles;
 
     public String getAccount() {
         return account;
@@ -53,4 +45,11 @@ public class User implements Serializable {
         this.createDate = createDate;
     }
 
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
 }

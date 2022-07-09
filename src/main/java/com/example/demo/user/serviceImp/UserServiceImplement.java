@@ -1,8 +1,9 @@
-package com.example.demo.serviceImp;
+package com.example.demo.user.serviceImp;
 
-import com.example.demo.jpa.User;
-import com.example.demo.repository.UserRepository;
-import com.example.demo.service.UserService;
+import com.example.demo.user.annotation.Log;
+import com.example.demo.user.jpa.User;
+import com.example.demo.user.repository.UserRepository;
+import com.example.demo.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,6 +26,7 @@ public class UserServiceImplement implements UserService {
     }
 
     @Override
+    @Log("Retrieve!!!!")
     public User retrieveByAccount(String account) {
         return repository.findUserByAccount(account);
     }

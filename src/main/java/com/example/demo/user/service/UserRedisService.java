@@ -1,6 +1,6 @@
-package com.example.demo.service;
+package com.example.demo.user.service;
 
-import com.example.demo.jpa.User;
+import com.example.demo.user.jpa.User;
 
 public interface UserRedisService {
     void set(String account, User user);

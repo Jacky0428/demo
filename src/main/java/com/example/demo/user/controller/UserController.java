@@ -1,9 +1,9 @@
-package com.example.demo.controller;
+package com.example.demo.user.controller;
 
 
-import com.example.demo.jpa.User;
-import com.example.demo.service.UserRedisService;
-import com.example.demo.service.UserService;
+import com.example.demo.user.jpa.User;
+import com.example.demo.user.service.UserRedisService;
+import com.example.demo.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
