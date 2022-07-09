@@ -35,6 +35,12 @@ public class MenuItem {
     private String note;
 
     /**
+     * The addition of the meal.
+     * ex: Hot or Cold, rice or noodle,... and so on.
+     */
+    private String addition;
+
+    /**
      * the menuItem belong this menu.
      */
     @ManyToOne
@@ -90,5 +96,13 @@ public class MenuItem {
 
     public void setMenu(Menu menu) {
         this.menu = menu;
+    }
+
+    public String getAddition() {
+        return addition;
+    }
+
+    public void setAddition(String addition) {
+        this.addition = addition;
     }
 }
