@@ -10,7 +10,6 @@ import java.util.List;
 public class Store {
 
     @Id
-    @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
@@ -42,10 +41,9 @@ public class Store {
     /**
      * The store's menus.
      */
-    @OneToMany(mappedBy = "store")
+    @OneToMany(mappedBy = "store", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private List<Menu> menus;
 
-    @Id
     public Long getId() {
         return id;
     }

@@ -8,17 +8,15 @@ import java.util.Objects;
 @Embeddable
 public class MenuId implements Serializable {
 
-    @Column(name = "STORE_ID")
-    private String storeId;
+    @Column(name = "store_id")
+    private Long storeId;
 
-    @Column(name = "NAME")
     private String name;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof MenuId)) return false;
-        MenuId menuId = (MenuId) o;
+        if (!(o instanceof MenuId menuId)) return false;
         return Objects.equals(storeId, menuId.storeId) && Objects.equals(name, menuId.name);
     }
 

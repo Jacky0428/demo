@@ -39,8 +39,8 @@ public class MenuItem {
      */
     @ManyToOne
     @JoinColumns({
-            @JoinColumn(name = "STORE_ID", referencedColumnName = "STORE_ID"),
-            @JoinColumn(name = "NAME", referencedColumnName = "NAME")
+            @JoinColumn(name = "store_id", referencedColumnName = "store_id"),
+            @JoinColumn(name = "menu_name", referencedColumnName = "name")
     })
     private Menu menu;
 
