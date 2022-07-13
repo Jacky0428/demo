@@ -1,13 +1,6 @@
-package com.example.demo.store.dto;
+package com.example.demo.store.command;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-public class StoreDTO extends DTOObject {
-
-    private Long id;
-
+public class StoreCreateCommand {
     /**
      * The name of the store.
      */
@@ -37,14 +30,6 @@ public class StoreDTO extends DTOObject {
      * The website of the store.
      */
     private String websiteUrl;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;

@@ -1,10 +1,6 @@
-package com.example.demo.store.dto;
+package com.example.demo.store.command;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-public class StoreDTO extends DTOObject {
+public class StoreUpdateCommand {
 
     private Long id;
 

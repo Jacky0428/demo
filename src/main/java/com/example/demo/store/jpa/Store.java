@@ -39,6 +39,11 @@ public class Store {
     private String description;
 
     /**
+     * The website of the store.
+     */
+    private String websiteUrl;
+
+    /**
      * The store's menus.
      */
     @OneToMany(mappedBy = "store", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
@@ -98,5 +103,13 @@ public class Store {
 
     public void setMenus(List<Menu> menus) {
         this.menus = menus;
+    }
+
+    public String getWebsiteUrl() {
+        return websiteUrl;
+    }
+
+    public void setWebsiteUrl(String websiteUrl) {
+        this.websiteUrl = websiteUrl;
     }
 }
