@@ -7,11 +7,15 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 @Component
 @Aspect
 public class LogAspect {
+
+    private static final Logger logger  = LoggerFactory.getLogger(LogAspect.class);
 
     @Pointcut("@annotation(com.example.demo.user.annotation.Log)")
     public void pointCut(){
@@ -23,7 +27,7 @@ public class LogAspect {
         String log = "=============== Start Execute Method: %s, Customized content: %s ===============";
         MethodSignature methodSignature = (MethodSignature) joinpoint.getSignature();
         String customizedContent = getValueInLogAnnotation(joinpoint);
-        System.out.println(String.format(log, methodSignature.getName(), customizedContent));
+        logger.info(String.format(log, methodSignature.getName(), customizedContent));
     }
 
     @After("pointCut()")
@@ -31,7 +35,7 @@ public class LogAspect {
         String log = "=============== Ended Execute Method: %s, Customized content: %s ===============";
         MethodSignature methodSignature = (MethodSignature) joinpoint.getSignature();
         String customizedContent = getValueInLogAnnotation(joinpoint);
-        System.out.println(String.format(log, methodSignature.getName(), customizedContent));
+        logger.info(String.format(log, methodSignature.getName(), customizedContent));
     }
 
     /**

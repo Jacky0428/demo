@@ -1,6 +1,7 @@
 package com.example.demo.user.controller;
 
 
+import com.example.demo.user.jpa.LoginStatus;
 import com.example.demo.user.jpa.User;
 import com.example.demo.user.service.UserRedisService;
 import com.example.demo.user.service.UserService;
@@ -65,6 +66,11 @@ public class UserController {
             return "Data Already Exist";
         userRedisService.set(account, newUser);
         return "Success";
+    }
+
+    @PostMapping("/logging/{account}/{password}")
+    public LoginStatus logging(@PathVariable("account")String account, @PathVariable("password")String password){
+            return userService.loggin(account, password);
     }
 
 }
