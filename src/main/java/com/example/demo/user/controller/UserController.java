@@ -22,6 +22,11 @@ public class UserController {
     @Autowired
     UserRedisService userRedisService;
 
+    @GetMapping("/")
+    public String loginTest(){
+        return "Success";
+    }
+
     @PostMapping("/add")
     public  String addUser(@RequestParam String account, @RequestParam String passWord){
         return userService.addUser(account, passWord);
